@@ -1,0 +1,21 @@
+{
+  "name": "codebridge",
+  "version": "1.0.0",
+  "description": "**CodeBridge** is a modern online coding interview and hiring platform that enables companies to assess developers through real-time coding challenges and technical evaluations. It is designed to streamline the technical hiring process with an intuitive interface, secure assessments, and scalable architecture.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "start":"npm run start --prefix server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rohanyadav143/CodeBridge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rohanyadav143/CodeBridge/issues"
+  },
+  "homepage": "https://github.com/Rohanyadav143/CodeBridge#readme"
+}
