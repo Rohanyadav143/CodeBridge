@@ -1,6 +1,7 @@
 import { Inngest } from "inngest";
 import connectDB from "../config/bd.js";
 import User from "../models/User.js";
+import { deleteStreamUser, upsertStreamUser } from "./stream.js";
 
 export const inngest = new Inngest({
   id: "code-bridge",
@@ -27,6 +28,12 @@ const addUser = inngest.createFunction(
     };
 
     await User.create(newUser);
+
+    await upsertStreamUser({
+      id: newUser.clerkId.toString(),
+      name: newUser.name,
+      image: newUser.profileImage,
+    });
   },
 );
 
@@ -45,10 +52,9 @@ const deleteUser = inngest.createFunction(
     await User.deleteOne({
       clerkId: id,
     });
+
+    await deleteStreamUser(id.toString());
   },
 );
 
-export const functions = [
-  addUser,
-  deleteUser
-];
+export const functions = [addUser, deleteUser];
